@@ -12,7 +12,7 @@ public class Role implements Serializable{
 	
 	private String name;
 	
-	private Integer seq;
+	private Integer sequence;
 	
 	//状态 0：启用 1：停用
 	private Integer status;
@@ -37,12 +37,12 @@ public class Role implements Serializable{
 		this.name = name;
 	}
 
-	public Integer getSeq() {
-		return seq;
+	public Integer getSequence() {
+		return sequence;
 	}
 
-	public void setSeq(Integer seq) {
-		this.seq = seq;
+	public void setSequence(Integer sequence) {
+		this.sequence = sequence;
 	}
 
 	public Integer getStatus() {

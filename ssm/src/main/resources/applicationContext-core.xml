@@ -73,7 +73,7 @@
 	       	<property name="dataSource" ref="dataSource" />
 	       	<!-- 指定mybatis主配置文件的位置 -->
 	       	<!--  
-	       	<property name="configLocation" value=""></property>
+	       	<property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
 	       	-->
 	       	<!-- 指定mapping映射文件的位置 ,当mapper接口与映射文件在同一包中，且映射文件的namespace为接口的全路径是，改属性可以不用指定-->
 	       	<!--  
@@ -101,10 +101,12 @@
 	       	</property>
 	    </bean>
 	    
-	    <!-- mapper扫描 -->
+	   <!-- mapper扫描 -->
        <bean id="mapperScannerConfigurer" class ="org.mybatis.spring.mapper.MapperScannerConfigurer" >
        		<!-- 指定要扫描的mapper接口的包 -->
 	        <property name ="basePackage" value ="cn.itcast.dao" />
+	        <!-- 指定要扫描的mapper继承的接口，不是必须，mapper可以不实现任何接口 -->
+	        <property name="markerInterface" value="cn.itcast.dao.SqlMapper"></property>
 	        <!-- 指定sqlSessionFactory的名称，注意此处是名称，而不是引用 -->
 	        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	   </bean>  

@@ -1,8 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="cn.itcast.dao.UserMapper">
+
+	<sql id="userColumns">
+		user_id,real_name,username,password,email,sex,age,phone,status,create_time
+	</sql>
 	
-	<select id="selectUsers" resultType="User">
-		select * from ssm_user
+	<insert id="createUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
+		insert into users
+		(
+			real_name,
+			username,
+			password,
+			email,
+			sex,
+			age,
+			phone,
+			status,
+			create_time
+		)
+		values 
+		(
+			#{realName,javaType=string,jdbcType=VARCHAR},
+			#{username},
+			#{password},
+			#{email,javaType=string,jdbcType=VARCHAR},
+			#{sex,javaType=int,jdbcType=TINYINT},
+			#{age,javaType=int,jdbcType=TINYINT},
+			#{phone,javaType=string,jdbcType=VARCHAR},
+			#{status},
+			#{createTime}
+		)
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		update users set 
+			real_name = #{realName,
+			javaType=string,jdbcType=VARCHAR},
+			password = #{password},
+			email = #{email,javaType=string,jdbcType=VARCHAR},
+			sex = #{sex,javaType=int,jdbcType=TINYINT},
+			phone = #{phone,javaType=string,jdbcType=VARCHAR},
+			status = #{status} 
+		where 
+			user_id = #{userId}
+	</update>
+	
+	<delete id="deleteUser" parameterType="int">
+		delete from users where user_id  = #{userId}
+	</delete>
+	
+	<select id="getUser" parameterType="int">
+		select 
+			user_id as userId,
+			real_name as realName,
+			username,
+			password,
+			email,
+			sex,
+			age,
+			phone,
+			status,
+			create_time as createTime
+		from 
+			users
+		where
+			user_id = #{userId}
 	</select>
+	
+	<select id="getUserByUsername" parameterType="string">
+		select
+			user_id as userId,
+			real_name as realName,
+			username,
+			password,
+			email,
+			sex,
+			age,
+			phone,
+			status,
+			create_time as createTime
+		from 
+			users 
+		where
+			username = #{username}
+	</select>
+	
+	<select id="listUser" resultType="User">
+		select
+			user_id as userId,
+			real_name as realName,
+			username,
+			password,
+			email,
+			sex,
+			age,
+			phone,
+			status,
+			create_time as createTime
+		from 
+			users 
+	</select>
+	
 </mapper>

@@ -22,7 +22,7 @@ public class Resource implements Serializable {
 	//状态 0：启用 1：停用
 	private Integer status;
 	
-	private Integer seq;
+	private Integer sequence;
 	
 	private String icon;
 	
@@ -78,12 +78,12 @@ public class Resource implements Serializable {
 		this.status = status;
 	}
 
-	public Integer getSeq() {
-		return seq;
+	public Integer getSequence() {
+		return sequence;
 	}
 
-	public void setSeq(Integer seq) {
-		this.seq = seq;
+	public void setSequence(Integer sequence) {
+		this.sequence = sequence;
 	}
 
 	public String getIcon() {

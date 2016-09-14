@@ -16,9 +16,29 @@ public class UserServiceImpl implements IUserService {
 	
 	@Autowired
 	private UserMapper userMapper;
-	
-	public List<User> selectUsers(){
-		PageHelper.startPage(1, 10);
-		return userMapper.selectUsers();
+
+	public void createUser(User user) {
+		userMapper.createUser(user);
 	}
+
+	public void updateUser(User user) {
+		userMapper.updateUser(user);
+	}
+
+	public void deleteUse(Integer userId) {
+		userMapper.deleteUser(userId);
+	}
+
+	public User getUser(Integer userId) {
+		return userMapper.getUser(userId);
+	}
+
+	public User getUserByUsername(String username) {
+		return userMapper.getUserByUsername(username);
+	}
+
+	public List<User> listUser() {
+		return userMapper.listUser();
+	}
+	
 }
